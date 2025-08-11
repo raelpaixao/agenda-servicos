@@ -1,0 +1,123 @@
+<%- include('includes/head') %>
+<%- include('includes/nav') %>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-2"></div>
+
+        <div class="col-lg-8 my-4">
+            <h1 class="text-center">Serviço</h1>
+            <p class="text-center lead">Adicione um serviço a agenda:</p>
+
+            <%- include('includes/messages') %>
+
+            <% if(servico._id) { %>
+            <form class="form-servico" action="/servico/edit/<%=servico.id%>" method="POST">
+            <% } else { %>
+            <form class="form-servico" action="/servico/register" method="POST">
+            <% } %>
+                <input type="hidden" name="_csrf" value="<%=csrfToken%>">
+                
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label>Nome do Pet<span style="color: crimson">*</span></label>
+                        <input value="<%=servico.pet%>" type="text" class="form-control" name="pet">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label>Raça<span style="color: crimson">*</span></label>
+                        <input value="<%=servico.raca%>" type="text" class="form-control" name="raca">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label>Nome do Dono(a)<span style="color: crimson">*</span></label>
+                        <input value="<%=servico.nomedono%>" type="text" class="form-control" name="nomedono">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label>Porte</label>
+                        <select class="form-control" value="<%=servico.porte%>" name="porte">
+                            <option value="none" selected disabled>Selecione o porte:</option>
+                            <option value="Pequeno">Pequeno</option>
+                            <option value="Medio">Médio</option>
+                            <option value="Grande">Grande</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label>Espécie</label>
+                        <select class="form-control" value="<%=servico.especie%>" name="especie">
+                            <option value="none" selected disabled>Selecione a espécie:</option>
+                            <option value="Cachorro">Cachorro</option>
+                            <option value="Gato">Gato</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label>Serviço<span style="color: crimson">*</span></label>
+                        <select class="form-control" value="<%=servico.servico%>" name="servico">
+                            <option value="none" selected disabled>Selecione o serviço:</option>
+                            <option value="Banho">Banho</option>
+                            <option value="Tosa na maquina">Tosa na máquina</option>
+                            <option value="Tosa na tesoura">Tosa na tesoura</option>
+                            <option value="Corte de unhas">Corte de unhas</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label>Data<span style="color: crimson">*</span></label>
+                        <input value="<%=servico.data%>" type="date" class="form-control" name="data">
+                    </div>
+                    <div class="form-group col-md-4 select">
+                      <label>Horário<span style="color: crimson">*</span></label>
+                        <select class="form-control" value="<%=servico.horario%>" name="horario">
+                            <option value="none" selected disabled>Selecione um horário:</option>
+                            <option value="8:00">8:00</option>
+                            <option value="8:30">8:30</option>
+                            <option value="9:00">9:00</option>
+                            <option value="9:30">9:30</option>
+                            <option value="10:00">10:00</option>
+                            <option value="10:30">10:30</option>
+                            <option value="11:00">11:00</option>
+                            <option value="11:30">11:30</option>
+                            <option value="12:00">12:00</option>
+                            <option value="12:30">12:30</option>
+                            <option value="13:00">13:00</option>
+                            <option value="13:30">13:30</option>
+                            <option value="14:00">14:00</option>
+                            <option value="14:30">14:30</option>
+                            <option value="15:00">15:00</option>
+                            <option value="15:30">15:30</option>
+                            <option value="16:00">16:00</option>
+                            <option value="16:30">16:30</option>
+                            <option value="17:00">17:00</option>
+                            <option value="17:30">17:30</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="radio">Transporte<span style="color: crimson">*</span></label><br>
+                        <input type="radio" name="transporte" value="Sim" <%=servico.transporte === 'Sim' ? 'checked' : ''%>> Sim
+                        <input type="radio" name="transporte" value="Não" <%=servico.transporte === 'Não' ? 'checked' : ''%>> Não
+                    </div>
+                </div>
+
+                <div>
+                    <div class="form-group">
+                        <label>Endereço</label>
+                        <input value="<%=servico.endereco%>" type="text" class="form-control" name="endereco">
+                        <small><span style="color: crimson">*</span>Campos obrigatórios.</small>
+                    </div>
+                <div>
+                    <button type="submit" class="btn btn-primary my-3">Salvar</button>
+                </div>
+            </form>
+
+        </div>
+        
+        <div class="col-lg-2"></div>
+    </div>
+</div>
+
+<%- include('includes/footer') %>
+
+
+<script src="/assets/js/servico.js"></script>

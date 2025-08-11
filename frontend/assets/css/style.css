@@ -1,0 +1,109 @@
+body {
+    background: url('../img/whitebg.svg') no-repeat center center fixed;
+    background-size: cover;
+    background-position: center;
+}
+
+/* ALGUMAS SOBREESCRIÇÕES NO BOOTSTRAP */
+.minha-navbar {
+    background-color: #498534;
+}
+
+.minha-navbar .nav-link,
+.minha-navbar .navbar-brand {
+    color: white;
+}
+
+
+.navbar-nav .nav-link {
+    border-radius: 10px;
+    transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out; 
+}
+
+.navbar-nav .nav-link:hover {
+    color: white;
+    background-color: #316b23;
+}
+
+.navbar-toggler {
+    color: white !important;
+}
+
+input::placeholder {
+    font-size: 12px;
+}
+
+input:focus {
+    box-shadow: 0 0 0 0.25rem #73D1518f !important;
+    outline: none;
+}
+
+.error-text {
+    color: crimson;
+}
+
+.col-lg-8 {
+    background: transparent;
+    border: 2px solid rgba( 255, 255, 255, .2);
+    border-radius: 10px;
+    backdrop-filter: blur(4px);
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+    border-radius: 15px;
+}
+
+button.btn.btn-primary {
+    background-color: #73D151;
+    border-color: #73D151;
+}
+
+button.btn.btn-primary:hover {
+    background-color: #498534;
+    border-color: #73D151;
+}
+
+button.btn.btn-primary:active,
+button.btn.btn-primary:focus,
+button.btn.btn-primary:focus:active,
+button.btn.btn-primary:active:focus,
+button.btn.btn-primary:focus-visible {
+  background-color: #498534;
+  border-color: #73D151;
+  color: white;
+  box-shadow: 0 0 0 0.25rem #73D1518f !important;
+  outline: none;
+}
+button.btn.btn-primary:focus,
+button.btn.btn-primary:focus-visible,
+button.btn.btn-primary:active:focus {
+  box-shadow: 0 0 0 0.25rem #73D1518f !important;
+  outline: none;
+}
+
+/* CONTATO */
+select {
+    border-radius: 10px;
+    padding: 5px;
+    cursor: pointer;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+
+select:focus {
+    box-shadow: 0 0 0 0.25rem #73D1518f !important;
+    outline: none;
+}
+
+.div-botao-contato {
+    display: flex;
+    justify-content: space-between;
+}
+
+.add-novo {
+    color: white;
+}
+
+.add-novo:hover {
+    color: white;
+    text-decoration: none;
+}

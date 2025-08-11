@@ -1,0 +1,60 @@
+<%- include('includes/head') %>
+<%- include('includes/nav') %>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-2"></div>
+
+        <div class="col-lg-8 my-4">
+            <h1 class="text-center">Clientes</h1>
+            
+            <%- include('includes/messages') %>
+            <% if(contatos.length > 0) { %>
+            <p class="text-center lead">Seus contatos estão abaixo:</p>
+            <div class="responsive-table">
+            <form action="/clientes/index" method="GET" class="mb-3 d-flex align-items-center">
+              <input
+                type="text"
+                name="search"
+                placeholder="Pesquisar por nome"
+                value="<%= search || '' %>"
+                class="form-control"
+                id="searchInput"
+              >
+              <a href="#" id="btnSearch" class="ml-2" style="cursor:pointer;">
+                <img src="/pesquisar-32.png" alt="Buscar" width="30" height="30">
+              </a>
+            </form>
+
+                <table class="table my-3">
+                        <tr>
+                            <th>NOME</th>
+                            <th>NOME PET</th>
+                            <th>RAÇA</th>
+                            <th>PORTE</th>
+                            <th>TELEFONE</th>
+                            <th></th>
+                            <th><a href="/contato/index"><img width="30" height="30" src="/icons8-add-48.png" alt=""></a></th>
+                        </tr>
+                    <% contatos.forEach(contato => { %>
+                        <tr>
+                            <td><%=contato.nome%></td>
+                            <td><%=contato.nomePet%></td>
+                            <td><%=contato.raca%></td>
+                            <td><%=contato.porte%></td>
+                            <td><%=contato.telefone%></td>
+                            <td><a href="/contato/index/<%=contato._id%>">Editar</a></td>
+                            <td><a href="/contato/delete/<%=contato._id%>"><img src="/excluir-30.png" alt="Exluir"></a></td>
+                        </tr>
+                    <% }); %>
+                </table>
+            </div>
+            <% } else { %>
+                <p class="text-center lead text-danger">Não existem clientes registrados.</p>
+            <% } %>
+        </div>
+        
+        <div class="col-lg-2"></div>
+    </div>
+</div>
+<script src="/assets/js/busca.js"></script>
+<%- include('includes/footer') %>

@@ -1,0 +1,49 @@
+<%- include('includes/head') %>
+<%- include('includes/nav') %>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-2"></div>
+
+        <div class="col-lg-8 my-4">
+            <h1 class="text-center">Agenda</h1>
+            
+            <%- include('includes/messages') %>
+            <% if(servicos.length > 0) { %>
+            <p class="text-center lead">Serviços registrados:</p>
+            <div class="responsive-table">
+                <table class="table table-sm my-3">
+                        <tr>
+                            <th>PET</th>
+                            <th>DONO</th>
+                            <th>SERVIÇO</th>
+                            <th>DATA</th>
+                            <th>HORÁRIO</th>
+                            <th>TRANSPORTE</th>
+                            <th>ENDEREÇO</th>
+                            <th></th>
+                            <th><a href="/servico/index"><img width="30" height="30" src="/icons8-add-48.png" alt=""></a></th>
+                        </tr>
+                    <% servicos.forEach(servico => { %>
+                        <tr>
+                            <td><%=servico.pet%></td>
+                            <td><%=servico.nomedono%></td>
+                            <td><%=servico.servico%></td>
+                            <td><%=servico.data%></td>
+                            <td><%=servico.horario%></td>
+                            <td><%=servico.transporte%></td>
+                            <td><%=servico.endereco%></td>
+                            <td><a href="/servico/index/<%=servico._id%>">Ver mais</a></td>
+                            <td><a href="/servico/delete/<%=servico._id%>"><img src="/excluir-30.png" alt="Exluir"></a></td>
+                        </tr>
+                    <% }); %>
+                </table>
+            </div>
+            <% } else { %>
+                <p class="text-center lead text-danger">Não existem serviços registrados.</p>
+            <% } %>
+        </div>
+        
+        <div class="col-lg-2"></div>
+    </div>
+</div>
+<%- include('includes/footer') %>

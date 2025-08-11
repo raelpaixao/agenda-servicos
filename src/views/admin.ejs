@@ -1,0 +1,39 @@
+<%- include('includes/head') %>
+<%- include('includes/nav') %>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-2"></div>
+
+        <div class="col-lg-8 my-4">
+            <h1 class="text-center">Portal Administrativo</h1>
+            
+            <%- include('includes/messages') %>
+            <% if(usuarios.length > 0) { %>
+            <p class="text-center lead">Gerencie os logins cadastrados:</p>
+            <div class="responsive-table">
+                <table class="table my-3">
+                        <tr>
+                            <th>NOME</th>
+                            <th>FUNÇÃO</th>
+                            <th>E-MAIL</th>
+                            <th><a href="/admin/register"><img width="30" height="30" src="/icons8-add-48.png" alt=""></a></th>
+                        </tr>
+                        <% usuarios.forEach(usuario => { %>
+                            <tr>
+                                <td><%= usuario.nome %></td>
+                                <td><%= usuario.funcao %></td>
+                                <td><%= usuario.email %></td>
+                                <td><a class="text-danger" href="/admin/delete/<%= usuario._id %>"><img src="/excluir-30.png" alt="Exluir"></a></td>
+                        </tr>
+                    <% }); %>
+                </table>
+            </div>
+            <% } else { %>
+                <p class="text-center lead text-danger">Não existem logins registrados.</p>
+            <% } %>
+        </div>
+        
+        <div class="col-lg-2"></div>
+    </div>
+</div>
+<%- include('includes/footer') %>
